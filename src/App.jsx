@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/plomberie" element={ <Page 
-  imageSrc="src/assets/images/plumbing2.jpg" 
+  imageSrc="plumbing2.jpg" 
   jobTitle="Plomberie" 
   description="Besoin d’une intervention urgence en plomberie ? ARPEG met à votre service toutes ses compétences professionnelles et intervient rapidement à votre domicile."
   services={[
@@ -33,7 +33,7 @@ function App() {
 />
 } />
      <Route path="/electricite" element={<Page 
-  imageSrc="src/assets/images/elec.jpg" 
+  imageSrc="elec.jpg" 
   jobTitle="Électricité" 
   description="Besoin d’une intervention en électricité ? ARPEG vous propose des services de dépannage, d’installation et de mise aux normes électriques."
   services={[
@@ -53,7 +53,7 @@ function App() {
 />
 } />
      <Route path="/chauffage" element={<Page 
-  imageSrc="src/assets/images/heating.jpg" 
+  imageSrc="heating.jpg" 
   jobTitle="Chauffage" 
   description="Besoin d’un service d’installation ou de dépannage de chauffage ? ARPEG vous accompagne pour optimiser votre confort thermique."
   services={[
@@ -74,7 +74,7 @@ function App() {
 } />
 
 <Route path="/salle-de-bains" element={<Page 
-  imageSrc="src/assets/images/salle-de-bains.png" 
+  imageSrc="salle-de-bains.png" 
   jobTitle="Salle de bains" 
   description="Envie de rénover ou d’aménager votre salle de bains ? ARPEG vous accompagne dans l’installation et la modernisation de vos sanitaires."
   services={[
@@ -94,7 +94,7 @@ function App() {
 />} />
 
 <Route path="/cuisinettes" element={<Page 
-  imageSrc="src/assets/images/cuisinette.jpg" 
+  imageSrc="cuisinette.jpg" 
   jobTitle="Cuisinettes" 
   description="Optimisez l’espace de votre cuisine avec des solutions sur mesure. ARPEG installe et rénove vos équipements de cuisine pour un confort optimal."
   services={[

@@ -17,17 +17,21 @@ export default function CardContainer() {
         <MultiActionAreaCard 
           title="Électricité" 
           description="Services d'installation et de maintenance électrique." 
-          imageLink="src/assets/images/elec.jpg" 
+          imageLink="elec.jpg" 
         />
         <MultiActionAreaCard 
           title="Plomberie" 
           description="Solutions de plomberie professionnelles pour votre maison et votre entreprise." 
+<<<<<<< HEAD
           imageLink="../src/assets/images/plumbing.jpg" 
+=======
+          imageLink="plumbing.jpg" 
+>>>>>>> db32645 (Fixed image paths and updated file structure)
         />
         <MultiActionAreaCard 
           title="Chauffage" 
           description="Installation et réparation fiables des systèmes de chauffage." 
-          imageLink="src/assets/images/heating.jpg" 
+          imageLink="heating.jpg" 
         />
       </Box>
 
@@ -43,12 +47,12 @@ export default function CardContainer() {
         <MultiActionAreaCard 
           title="Salle de bains" 
           description="Rénovation et aménagement de salles de bains modernes et fonctionnelles." 
-          imageLink="src/assets/images/salle-de-bains.png" 
+          imageLink="salle-de-bains.png" 
         />
         <MultiActionAreaCard 
           title="Cuisinettes" 
           description="Optimisation et installation de cuisines compactes et pratiques." 
-          imageLink="src/assets/images/cuisinette.jpg" 
+          imageLink="cuisinette.jpg" 
         />
       </Box>
     </Box>

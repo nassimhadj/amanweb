@@ -15,10 +15,10 @@ export default function Carousel() {
         className="mySwiper"
       >
         {[
-          { src: 'src/assets/images/chauffe_eau.png', text: 'Chauffe-eau haute performance' },
-          { src: 'src/assets/images/chaudiere.png', text: 'Chaudière moderne et efficace' },
-          { src: 'src/assets/images/plomberie.png', text: 'Services de plomberie professionnels' },
-          { src: 'src/assets/images/sdb.png', text: 'Salle de bain élégante et moderne' }
+          { src: 'chauffe_eau.png', text: 'Chauffe-eau haute performance' },
+          { src: 'chaudiere.png', text: 'Chaudière moderne et efficace' },
+          { src: 'plomberie.png', text: 'Services de plomberie professionnels' },
+          { src: 'sdb.png', text: 'Salle de bain élégante et moderne' }
         ].map((item, index) => (
           <SwiperSlide key={index}>
             <div className="relative">
