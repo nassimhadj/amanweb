@@ -22,11 +22,8 @@ export default function CardContainer() {
         <MultiActionAreaCard 
           title="Plomberie" 
           description="Solutions de plomberie professionnelles pour votre maison et votre entreprise." 
-<<<<<<< HEAD
-          imageLink="plumbing.jpg" 
-=======
-          imageLink="plumbing.jpg" 
->>>>>>> db32645 (Fixed image paths and updated file structure)
+
+          imageLink="plumbing.jpg"
         />
         <MultiActionAreaCard 
           title="Chauffage" 
