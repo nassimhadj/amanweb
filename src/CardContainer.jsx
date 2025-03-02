@@ -23,7 +23,7 @@ export default function CardContainer() {
           title="Plomberie" 
           description="Solutions de plomberie professionnelles pour votre maison et votre entreprise." 
 <<<<<<< HEAD
-          imageLink="../src/assets/images/plumbing.jpg" 
+          imageLink="plumbing.jpg" 
 =======
           imageLink="plumbing.jpg" 
 >>>>>>> db32645 (Fixed image paths and updated file structure)
