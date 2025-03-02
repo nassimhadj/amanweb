@@ -30,7 +30,7 @@ function Navbar() {
           {/* Logo & Name (Desktop) */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', mr: 4 }}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
-              <img src="src/assets/images/wrench.png" alt="AmanPro Logo" style={{ width: 40, height: 40, marginRight: 8 }} />
+              <img src="wrench.png" alt="AmanPro Logo" style={{ width: 40, height: 40, marginRight: 8 }} />
               <Typography
                 variant="h6"
                 noWrap
@@ -82,7 +82,7 @@ function Navbar() {
           {/* Logo & Name (Mobile) */}
           <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', flexGrow: 1 }}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
-              <img src="src/assets/images/wrench.png" alt="AmanPro Logo" style={{ width: 40, height: 40, marginRight: 8 }} />
+              <img src="wrench.png" alt="AmanPro Logo" style={{ width: 40, height: 40, marginRight: 8 }} />
               <Typography
                 variant="h5"
                 noWrap
