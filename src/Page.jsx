@@ -14,7 +14,7 @@ export default function Page({ imageSrc, jobTitle, description, services, additi
             ))}
           </ul>
           <p className="mt-6 text-gray-700">
-            ARPEG, situé près d’Angers (49) propose également <strong>l’aménagement ou la rénovation</strong> de votre cuisine, salle de bains ou sanitaires.
+            AMANPRO, situé près d’Angers (49) propose également <strong>l’aménagement ou la rénovation</strong> de votre cuisine, salle de bains ou sanitaires.
           </p>
           <ul className="list-disc pl-5 mt-4 text-gray-700">
             {additionalServices.map((service, index) => (

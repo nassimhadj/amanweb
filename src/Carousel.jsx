@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css/autoplay';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 export default function Carousel() {
   return (
@@ -11,7 +12,12 @@ export default function Carousel() {
       <Swiper
         pagination={{ type: 'bullets', clickable: true }}
         navigation={true}
-        modules={[Pagination, Navigation]}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
       >
         {[
@@ -23,7 +29,9 @@ export default function Carousel() {
           <SwiperSlide key={index}>
             <div className="relative">
               <img src={item.src} className="w-full h-full object-cover rounded-lg" />
-              <div className="absolute bottom-4 left-4 bg-white bg-opacity-75 font-bold p-2 rounded text-primary">
+              <div className="absolute bottom-4 left-4 px-4 py-2 rounded font-bold text-white" style={{
+                textShadow: '0 0 4px #3B82F6, 0 0 6px #60A5FA'
+              }}>
                 {item.text}
               </div>
             </div>

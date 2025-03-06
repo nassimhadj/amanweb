@@ -47,7 +47,7 @@ export default function ServiceBenefits() {
           <div>
             <h3 className="text-xl font-bold">À propos</h3>
             <p className="mt-2 text-gray-300">
-              Située à Saint-Léger-des-Bois, ARPEG est une entreprise spécialisée en plomberie, électricité, chauffage et peinture.
+              Située à Écuillé, AMANPRO est une entreprise spécialisée en plomberie, électricité, chauffage et peinture.
             </p>
           </div>
           <div>
@@ -61,7 +61,7 @@ export default function ServiceBenefits() {
           </div>
           <div>
             <h3 className="text-xl font-bold">Contact</h3>
-            <p className="mt-2 text-gray-300">12 route du Petit Anjou, 49170 Saint-Léger-des-Bois</p>
+            <p className="mt-2 text-gray-300">3 All. du Vieux Chêne ,49460 Écuillé</p>
             <button className="mt-4 bg-[#003f5c] text-white py-2 px-4 rounded-lg hover:bg-[#002b3d]">
               Contactez-nous
             </button>
