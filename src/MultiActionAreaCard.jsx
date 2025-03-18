@@ -3,23 +3,16 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardActions from '@mui/material/CardActions';
-import { styled } from '@mui/material/styles';
+import { CardActionArea } from '@mui/material';
 
-const ZoomCardMedia = styled(CardMedia)({
-  transition: 'transform 0.3s ease-in-out',
-  '&:hover': {
-    transform: 'scale(1.1)',
-  },
-});
-
-export default function MultiActionAreaCard({ title, description, imageLink }) {
+export default function MultiActionAreaCard({ title, description, imageLink, onClick }) {
   return (
-    <Card sx={{ width: 345, minHeight: 300, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', overflow: 'hidden' }}>
-      <CardActionArea>
-        <ZoomCardMedia
+    <Card 
+      sx={{ maxWidth: 345, height: '100%' }}
+      onClick={onClick} // Add the onClick handler here
+    >
+      <CardActionArea sx={{ height: '100%' }}>
+        <CardMedia
           component="img"
           height="140"
           image={imageLink}
@@ -29,16 +22,11 @@ export default function MultiActionAreaCard({ title, description, imageLink }) {
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          <Typography variant="body2" color="text.secondary">
             {description}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Voir plus
-        </Button>
-      </CardActions>
     </Card>
   );
 }

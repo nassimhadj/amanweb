@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const benefits = [
   {
@@ -24,6 +25,12 @@ const benefits = [
 ];
 
 export default function ServiceBenefits() {
+  const navigate = useNavigate();
+  
+  const handleContactClick = () => {
+    navigate('/contact');
+  };
+
   return (
     <div className="flex flex-col   bg-[#0077b6] text-white">
       <div className="flex-grow py-10 mt-4">
@@ -62,7 +69,10 @@ export default function ServiceBenefits() {
           <div>
             <h3 className="text-xl font-bold">Contact</h3>
             <p className="mt-2 text-gray-300">3 All. du Vieux Chêne ,49460 Écuillé</p>
-            <button className="mt-4 bg-[#003f5c] text-white py-2 px-4 rounded-lg hover:bg-[#002b3d]">
+            <button 
+              className="mt-4 bg-[#003f5c] text-white py-2 px-4 rounded-lg hover:bg-[#002b3d] cursor-pointer"
+              onClick={handleContactClick}
+            >
               Contactez-nous
             </button>
           </div>

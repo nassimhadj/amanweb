@@ -42,7 +42,7 @@ function Navbar() {
                   textDecoration: 'none',
                 }}
               >
-                AMANPO
+                AMANPRO
               </Typography>
             </Link>
           </Box>

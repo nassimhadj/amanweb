@@ -22,11 +22,7 @@ export default function Page({ imageSrc, jobTitle, description, services, additi
             ))}
           </ul>
           <div className="mt-6">
-            <div className="p-6 flex justify-center">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg">
-                DEMANDER UN DEVIS
-              </button>
-            </div>
+          
           </div>
         </div>
         <div className="flex justify-center md:justify-end">

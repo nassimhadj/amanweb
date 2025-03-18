@@ -10,7 +10,9 @@ import {
   Paper,
   Divider,
   Chip,
-  CircularProgress
+  CircularProgress,
+  Alert,
+  Snackbar
 } from '@mui/material';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -20,6 +22,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import { API_URL } from './api.config';
+// API URL - Replace with your actual API URL
+ // Update this to your actual API URL
 
 export default function RdvForm() {
   // Main form state - without etapes since they're admin-only
@@ -35,6 +40,8 @@ export default function RdvForm() {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Handle main form changes
   const handleChange = (e) => {
@@ -49,8 +56,9 @@ export default function RdvForm() {
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
     const newAttachments = files.map(file => ({
+      file: file,
       filename: file.name,
-      path: URL.createObjectURL(file), // This would be handled differently in production
+      path: URL.createObjectURL(file),
       uploadDate: new Date()
     }));
 
@@ -76,25 +84,104 @@ export default function RdvForm() {
     return <InsertDriveFileIcon />;
   };
 
+  // Validate form
+  const validateForm = () => {
+    if (!formData.title || !formData.email || !formData.name || !formData.phone || !formData.address || !formData.description) {
+      setErrorMessage("Tous les champs sont obligatoires.");
+      setSubmitError(true);
+      return false;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setErrorMessage("L'adresse email n'est pas valide.");
+      setSubmitError(true);
+      return false;
+    }
+
+    // Phone validation - allow only numbers and check length
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      setErrorMessage("Le numéro de téléphone doit contenir 10 chiffres.");
+      setSubmitError(true);
+      return false;
+    }
+
+    return true;
+  };
+
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setIsSubmitting(false);
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    setSubmitError(false);
+    
+    try {
+      const formDataToSend = new FormData();
+      
+      // Add basic fields
+      formDataToSend.append('title', formData.title);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('phone', formData.phone);
+      formDataToSend.append('address', formData.address);
+      formDataToSend.append('description', formData.description);
+      formDataToSend.append('status', 'proposé'); // Default status from schema
+      
+      // Empty etapes array as per your requirement
+      formDataToSend.append('etapes', JSON.stringify([]));
+      
+      // Add attachments
+      for (let i = 0; i < formData.attachments.length; i++) {
+        const attachment = formData.attachments[i];
+        formDataToSend.append('attachments', attachment.file);
+      }
+      
+      // Send to server
+      const response = await fetch(`${API_URL}/rdv`, {
+        method: 'POST',
+        body: formDataToSend,
+        headers: {
+          'Accept': 'application/json',
+          // Don't set Content-Type header - browser will set it with proper boundary for FormData
+        }
+      });
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || 'Erreur lors de l\'envoi de votre demande');
+      }
+      
+      // Success
       setSubmitSuccess(true);
       
-      // Reset success message after 3 seconds
+      // Reset form after successful submission
+      setFormData({
+        title: '',
+        email: '',
+        name: '',
+        phone: '',
+        address: '',
+        description: '',
+        attachments: []
+      });
+      
+      // Hide success message after 5 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
-      }, 3000);
+      }, 5000);
       
-      // Here you would send the data to your API
-      // Note: status will be set to default 'proposé' as per schema
-    }, 1500);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setErrorMessage(error.message || 'Une erreur est survenue lors de l\'envoi de votre demande');
+      setSubmitError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -116,7 +203,7 @@ export default function RdvForm() {
             <TextField 
               fullWidth 
               name="title" 
-              label="Titre de votre chantier" 
+              label="Titre de votre projet" 
               required 
               variant="outlined" 
               value={formData.title}
@@ -135,7 +222,7 @@ export default function RdvForm() {
             <TextField 
               fullWidth 
               name="name" 
-              label="Nom et prenom" 
+              label="Nom et prénom" 
               required 
               variant="outlined" 
               value={formData.name}
@@ -179,7 +266,7 @@ export default function RdvForm() {
           
           <Grid item xs={12}>
             <Divider>
-              <Chip label="Détails du chantier" size="small" />
+              <Chip label="Détails du projet" size="small" />
             </Divider>
           </Grid>
           
@@ -194,7 +281,7 @@ export default function RdvForm() {
               variant="outlined" 
               value={formData.description}
               onChange={handleChange}
-              placeholder="Décrivez votre problème en détail (matériaux, dimensions, délais souhaités, etc.)"
+              placeholder="Décrivez votre projet en détail (matériaux, dimensions, délais souhaités, etc.)"
               helperText="Plus vous donnez de détails, mieux nous pourrons répondre à vos besoins"
             />
           </Grid>
@@ -206,7 +293,7 @@ export default function RdvForm() {
           Documents supplémentaires
         </Typography>
         <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
-          Joignez des photos, plans ou tout autre document utile à la compréhension de votre cas
+          Joignez des photos, plans ou tout autre document utile à la compréhension de votre projet
         </Typography>
         
         <Button
@@ -272,13 +359,31 @@ export default function RdvForm() {
         >
           {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
         </Button>
-        
-        {submitSuccess && (
-          <Typography variant="body2" sx={{ color: 'success.main', mt: 2 }}>
-            Votre demande a été envoyée avec succès ! Nous vous contacterons bientôt.
-          </Typography>
-        )}
       </Box>
+
+      {/* Success Snackbar */}
+      <Snackbar 
+        open={submitSuccess} 
+        autoHideDuration={5000}
+        onClose={() => setSubmitSuccess(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert severity="success" variant="filled">
+          Votre demande a été envoyée avec succès ! Nous vous contacterons bientôt.
+        </Alert>
+      </Snackbar>
+
+      {/* Error Snackbar */}
+      <Snackbar 
+        open={submitError} 
+        autoHideDuration={5000}
+        onClose={() => setSubmitError(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert severity="error" variant="filled">
+          {errorMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
