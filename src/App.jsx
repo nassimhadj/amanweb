@@ -14,7 +14,7 @@ function App() {
         <Route path="/plomberie" element={ <Page 
   imageSrc="plumbing2.jpg" 
   jobTitle="Plomberie" 
-  description="Besoin d'une intervention urgence en plomberie ? ARPEG met à votre service toutes ses compétences professionnelles et intervient rapidement à votre domicile."
+  description="Besoin d'une intervention urgence en plomberie ? AMANPRO met à votre service toutes ses compétences professionnelles et intervient rapidement à votre domicile."
   services={[
     "Désengorgement",
     "Détartrage, Débouchage, Dépannage",
@@ -35,7 +35,7 @@ function App() {
      <Route path="/electricite" element={<Page 
   imageSrc="elec.jpg" 
   jobTitle="Électricité" 
-  description="Besoin d'une intervention en électricité ? ARPEG vous propose des services de dépannage, d'installation et de mise aux normes électriques."
+  description="Besoin d'une intervention en électricité ? AMANPRO vous propose des services de dépannage, d'installation et de mise aux normes électriques."
   services={[
     "Installation de tableaux électriques",
     "Dépannage de pannes électriques",
@@ -55,7 +55,7 @@ function App() {
      <Route path="/chauffage" element={<Page 
   imageSrc="heating.jpg" 
   jobTitle="Chauffage" 
-  description="Besoin d'un service d'installation ou de dépannage de chauffage ? ARPEG vous accompagne pour optimiser votre confort thermique."
+  description="Besoin d'un service d'installation ou de dépannage de chauffage ? AMANPRO vous accompagne pour optimiser votre confort thermique."
   services={[
     "Installation de chaudières et chauffe-eau",
     "Entretien et maintenance de chauffage",
@@ -76,7 +76,7 @@ function App() {
 <Route path="/salle-de-bains" element={<Page 
   imageSrc="salle-de-bains.png" 
   jobTitle="Salle de bains" 
-  description="Envie de rénover ou d'aménager votre salle de bains ? ARPEG vous accompagne dans l'installation et la modernisation de vos sanitaires."
+  description="Envie de rénover ou d'aménager votre salle de bains ? AMANPRO vous accompagne dans l'installation et la modernisation de vos sanitaires."
   services={[
     "Installation de douches et baignoires",
     "Pose de lavabos et vasques",
@@ -96,7 +96,7 @@ function App() {
 <Route path="/cuisinettes" element={<Page 
   imageSrc="cuisinette.jpg" 
   jobTitle="Cuisinettes" 
-  description="Optimisez l'espace de votre cuisine avec des solutions sur mesure. ARPEG installe et rénove vos équipements de cuisine pour un confort optimal."
+  description="Optimisez l'espace de votre cuisine avec des solutions sur mesure. AMANPRO installe et rénove vos équipements de cuisine pour un confort optimal."
   services={[
     "Installation de plans de travail",
     "Pose d'éviers et mitigeurs",
